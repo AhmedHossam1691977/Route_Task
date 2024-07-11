@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import CustomerTable from './compnent/CustomerTable/CustomerTable.jsx';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import TransactionGraph from './compnent/TransactionGraph/TransactionGraph.jsx';
+
+export default function App() {
+
+
+let routes = createBrowserRouter([
+  {path:"/" ,element:<CustomerTable/>},
+  {path:"TransactionGraph/:id" ,element:<TransactionGraph/>}
+
+])
+
+
+
+  return <>
+  <RouterProvider router={routes}/>
+  </>
+
 }
 
-export default App;
+//DB server run : npx json-server --watch db.json --port 5000
